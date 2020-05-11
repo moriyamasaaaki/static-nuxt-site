@@ -8,16 +8,14 @@
             <div class="column is-8 is-offset-2">
               <div class="section">
                 <div class="title">
-                  <h1>Newest Posts</h1>
+                  <h1>投稿一覧</h1>
                   <hr />
                 </div>
                 <PostItem
-                  :title="title"
-                  :subtitle="'初めての投稿の詳細'"
-                />
-                <PostItem
-                  :title="'2つ目の投稿'"
-                  :subtitle="'2つ目の投稿の詳細'"
+                  v-for="post in posts"
+                  :key="post._id"
+                  :title="post.title"
+                  :subtitle="post.subtitle"
                 />
               </div>
             </div>
@@ -37,7 +35,19 @@ export default {
   },
   data () {
     return {
-      title: '初めての投稿'
+      title: '初めての投稿',
+      posts: [
+        {
+          _id: '1',
+          title: '初めての投稿',
+          subtitle: '初めての投稿の詳細'
+        },
+        {
+          _id: '2',
+          title: '2つ目の投稿',
+          subtitle: '2つ目の投稿の詳細'
+        }
+      ]
     }
   }
 }</script>
