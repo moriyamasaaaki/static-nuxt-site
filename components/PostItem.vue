@@ -4,12 +4,18 @@
       <h4 class="title is-4">{{ title }}</h4>
       <h5 class="subtitle is-5">{{ subtitle }}</h5>
     </a>
-    <div class="post-content">by Filip Jerga, 27th Jan, 2019</div>
+    <div class="post-content">作成日: {{ moment(date, 'YYYYMMDD').fromNow() }}</div>
   </div>
 </template>
 
 <script>
+import moment from 'moment'
 export default {
+  data () {
+    return {
+      moment
+    }
+  },
   props: {
     title: {
       type: String,
@@ -18,6 +24,12 @@ export default {
     subtitle: {
       type: String,
       required: false
+    },
+    date: {
+      type: Date,
+      required: false,
+      default: new Date()
     }
   }
-}</script>
+}
+</script>
