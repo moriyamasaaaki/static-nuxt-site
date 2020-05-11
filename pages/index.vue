@@ -1,5 +1,5 @@
 <template>
-<div>
+  <div>
     <navbar />
     <div class="blogs-page">
       <div class="main-content">
@@ -11,12 +11,16 @@
                   <h1>Newest Posts</h1>
                   <hr />
                 </div>
-                <PostItem />
-                <PostItem />
+                <PostItem
+                  :title="title"
+                  :subtitle="'初めての投稿の詳細'"
+                />
+                <PostItem
+                  :title="'2つ目の投稿'"
+                  :subtitle="'2つ目の投稿の詳細'"
+                />
               </div>
-              <!-- end of post -->
             </div>
-            <!-- end of side bar -->
           </div>
         </div>
       </div>
@@ -29,11 +33,14 @@ import Navbar from '~/components/Navbar'
 import PostItem from '~/components/PostItem'
 export default {
   components: {
-    Navbar,
-    PostItem
+    Navbar, PostItem
+  },
+  data () {
+    return {
+      title: '初めての投稿'
+    }
   }
-}
-</script>
+}</script>
 <style>
   .post-content {
     font-style: italic;
