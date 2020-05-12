@@ -17,6 +17,7 @@
                   :title="post.title"
                   :subtitle="post.subtitle"
                   :date="post.createdAt"
+                  :isRead="post.isRead"
                 />
               </div>
             </div>
@@ -37,24 +38,12 @@ export default {
   data () {
     return {
       title: '初めての投稿',
-      posts: [
-        {
-          _id: '1',
-          title: '初めての投稿',
-          subtitle: '初めての投稿の詳細',
-          createdAt: new Date()
-        },
-        {
-          _id: '2',
-          title: '2つ目の投稿',
-          subtitle: '2つ目の投稿の詳細',
-          createdAt: new Date()
-        }
-      ]
+      posts: this.$store.state.posts
     }
   }
-}</script>
-<style>
+}
+</script>
+<style scoped>
   .post-content {
     font-style: italic;
   }
