@@ -23,19 +23,12 @@
             Menu
             </a>
             <div class="navbar-dropdown">
-              <a class="navbar-item">
-              Dashboard
-              </a>
-              <a class="navbar-item">
-              Profile
-              </a>
-              <a class="navbar-item">
-              Settings
-              </a>
-              <hr class="navbar-divider" />
-              <div class="navbar-item">
-                Logout
-              </div>
+              <nuxt-link to="/" class="navbar-item">
+              ホーム
+              </nuxt-link>
+              <nuxt-link to="/manage" class="navbar-item">
+              管理
+              </nuxt-link>
             </div>
           </div>
         </div>
