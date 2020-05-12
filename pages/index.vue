@@ -49,6 +49,9 @@ export default {
       }
     }
   },
+  mounted () {
+    this.$store.dispatch('fetchPosts')
+  },
   computed: {
     posts () {
       return this.$store.state.posts
@@ -56,7 +59,6 @@ export default {
   },
   methods: {
     isFormValid () {
-      console.log('isFormValid has been called')
       if (this.form.title) {
         return true
       }
