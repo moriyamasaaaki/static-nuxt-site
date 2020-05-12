@@ -4,7 +4,7 @@
       <h4 class="title is-4">{{ title }}</h4>
       <h5 class="subtitle is-5">{{ subtitle }}</h5>
     </a>
-    <div class="post-content">作成日: {{ moment(date, 'YYYYMMDD').fromNow() }}</div>
+    <div class="post-content">作成日: {{ formatDate(date) }}</div>
   </div>
 </template>
 
@@ -29,6 +29,11 @@ export default {
       type: Date,
       required: false,
       default: new Date()
+    }
+  },
+  methods: {
+    formatDate (date) {
+      return moment(date, 'YYYYMMDD').fromNow()
     }
   }
 }
