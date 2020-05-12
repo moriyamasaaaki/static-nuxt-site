@@ -24,6 +24,11 @@
           </div>
         </div>
       </div>
+      <!-- <form>
+        <input type="text" v-model="form.title">
+        <input type="text" v-model="form.subtitle">
+      </form>
+      {{isFormValid()}} -->
     </div>
   </div>
 </template>
@@ -38,7 +43,24 @@ export default {
   data () {
     return {
       title: '初めての投稿',
-      posts: this.$store.state.posts
+      form: {
+        title: 'タイトル',
+        subtitle: 'サブタイトル'
+      }
+    }
+  },
+  computed: {
+    posts () {
+      return this.$store.state.posts
+    }
+  },
+  methods: {
+    isFormValid () {
+      console.log('isFormValid has been called')
+      if (this.form.title) {
+        return true
+      }
+      return false
     }
   }
 }
