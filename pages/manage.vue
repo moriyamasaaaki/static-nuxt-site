@@ -6,9 +6,29 @@
         <aside class="column is-2 aside hero">
           <div>
             <div class="compose has-text-centered">
-              <a class="button is-danger is-block is-bold">
-                <span class="compose">作成</span>
-              </a>
+              <modal>
+                <form class="post-form">
+                  <div class="field">
+                    <label class="label">タイトル</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="投稿１" />
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label class="label">サブタイトル</label>
+                    <div class="control">
+                      <input class="input" type="email" placeholder="サブ投稿１" />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">内容</label>
+                    <div class="control">
+                      <textarea class="textarea" placeholder="投稿１の内容" />
+                    </div>
+                  </div>
+                </form>
+              </modal>
             </div>
             <div class="main" />
           </div>
@@ -107,9 +127,11 @@
 <script>
 import { mapState } from 'vuex'
 import Navbar from '~/components/Navbar'
+import Modal from '~/components/shared/Modal'
 export default {
   components: {
-    Navbar
+    Navbar,
+    Modal
   },
   fetch ({ store }) {
     if (store.getters['post/hasEmptyItems']) {
@@ -133,5 +155,8 @@ export default {
 .card:hover {
   cursor: pointer;
   background-color: #eeeeee;
+}
+.post-form {
+    text-align: left;
 }
 </style>
