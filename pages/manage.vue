@@ -105,10 +105,21 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 import Navbar from '~/components/Navbar'
 export default {
   components: {
     Navbar
+  },
+  fetch ({ store }) {
+    if (store.getters['post/hasEmptyItems']) {
+      return store.dispatch('post/fetchPosts')
+    }
+  },
+  computed: {
+    ...mapState({
+      posts: state => state.post.items
+    })
   }
 }
 </script>

@@ -17,7 +17,7 @@
                   :title="post.title"
                   :subtitle="post.subtitle"
                   :date="post.createdAt"
-                  :isRead="post.isRead"
+                  :is-read="post.isRead"
                 />
               </div>
             </div>
@@ -40,6 +40,11 @@ export default {
   components: {
     Navbar, PostItem
   },
+  fetch ({ store }) {
+    if (store.getters['post/hasEmptyItems']) {
+      return store.dispatch('post/fetchPosts')
+    }
+  },
   data () {
     return {
       title: '初めての投稿',
@@ -49,12 +54,9 @@ export default {
       }
     }
   },
-  mounted () {
-    this.$store.dispatch('fetchPosts')
-  },
   computed: {
     posts () {
-      return this.$store.state.posts
+      return this.$store.state.post.items
     }
   },
   methods: {
