@@ -6,29 +6,7 @@
         <aside class="column is-2 aside hero">
           <div>
             <div class="compose has-text-centered">
-              <modal>
-                <form class="post-form">
-                  <div class="field">
-                    <label class="label">タイトル</label>
-                    <div class="control">
-                      <input class="input" type="text" placeholder="投稿１" />
-                    </div>
-                  </div>
-
-                  <div class="field">
-                    <label class="label">サブタイトル</label>
-                    <div class="control">
-                      <input class="input" type="email" placeholder="サブ投稿１" />
-                    </div>
-                  </div>
-                  <div class="field">
-                    <label class="label">内容</label>
-                    <div class="control">
-                      <textarea class="textarea" placeholder="投稿１の内容" />
-                    </div>
-                  </div>
-                </form>
-              </modal>
+              <post-create />
             </div>
             <div class="main" />
           </div>
@@ -83,7 +61,7 @@
             </div>
           </div>
         </div>
-        <div id="message-pane" class="column is-6 message hero is-fullheight is-hidden">
+        <div id="message-pane" class="column is-6 message hero is-fullheight">
           <div class="box message-preview">
             <div class="top">
               <div class="avatar">
@@ -91,15 +69,16 @@
               </div>
               <div class="address">
                 <div class="name">
-                  John Smith
+                  守屋雅章
                 </div>
                 <div class="email">
-                  someone@gmail.com
+                  xxxx@gmail.com
                 </div>
               </div>
               <hr />
               <div class="content" />
             </div>
+            <post-manage />
           </div>
         </div>
       </div>
@@ -107,16 +86,7 @@
         <div class="container">
           <div class="content has-text-centered">
             <p>
-              <strong>Bulma Templates</strong> by
-              <a href="https://github.com/dansup">Daniel Supernault</a>. The source code is licensed
-              <a
-                href="http://opensource.org/licenses/mit-license.php"
-              >MIT</a>.
-            </p>
-            <p>
-              <a class="icon" href="https://github.com/dansup/bulma-templates">
-                <i class="fa fa-github" />
-              </a>
+              <strong>MasaakiMoriya</strong>
             </p>
           </div>
         </div>
@@ -127,11 +97,13 @@
 <script>
 import { mapState } from 'vuex'
 import Navbar from '~/components/Navbar'
-import Modal from '~/components/shared/Modal'
+import PostCreate from '~/components/PostCreate'
+import PostManage from '~/components/PostManage'
 export default {
   components: {
     Navbar,
-    Modal
+    PostCreate,
+    PostManage
   },
   fetch ({ store }) {
     if (store.getters['post/hasEmptyItems']) {
@@ -155,8 +127,5 @@ export default {
 .card:hover {
   cursor: pointer;
   background-color: #eeeeee;
-}
-.post-form {
-    text-align: left;
 }
 </style>

@@ -1,12 +1,10 @@
 <template>
   <div>
-    <a
-      class="button is-danger is-block is-bold"
-      @click="isActive = true"
-    >
-      <span class="compose">Create</span>
-    </a>
-    <div :class="{'is-active': isActive}" class="modal">
+    <div @click="isActive = true">
+      <slot name="actionButton">
+        <button class="button is-primary">Open</button>
+      </slot>
+    </div>    <div :class="{'is-active': isActive}" class="modal">
       <div class="modal-background" />
       <div class="modal-card">
         <header class="modal-card-head">
@@ -19,10 +17,11 @@
           <slot />
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success">
+          <button
+            @click="emitModalSubmit"
+            class="button is-success">
             送信
-          </button>
-          <button class="button" @click="isActive = false">
+          </button>          <button class="button" @click="isActive = false">
             キャンセル
           </button>
         </footer>
@@ -35,6 +34,14 @@ export default {
   data () {
     return {
       isActive: false
+    }
+  },
+  methods: {
+    emitModalSubmit () {
+      this.$emit('modalSubmitted', { closeModal: this.closeModal, data: 'Just some data' })
+    },
+    closeModal () {
+      this.isActive = false
     }
   }
 }
