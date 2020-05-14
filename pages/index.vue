@@ -40,11 +40,11 @@ export default {
   components: {
     Navbar, PostItem
   },
-  fetch ({ store }) {
-    if (store.getters['post/hasEmptyItems']) {
-      return store.dispatch('post/fetchPosts')
-    }
-  },
+  // fetch ({ store }) {
+  //   if (store.getters['post/hasEmptyItems']) {
+  //     return store.dispatch('post/fetchPosts')
+  //   }
+  // },
   data () {
     return {
       title: '初めての投稿',
