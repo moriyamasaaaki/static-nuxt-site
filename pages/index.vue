@@ -1,84 +1,44 @@
 <template>
   <div>
-    <navbar />
-    <div class="blogs-page">
-      <div class="main-content">
-        <div class="container">
-          <div class="columns is-mobile">
-            <div class="column is-8 is-offset-2">
-              <div class="section">
-                <div class="title">
-                  <h1>投稿一覧</h1>
-                  <hr />
-                </div>
-                <PostItem
-                  v-for="post in posts"
-                  :key="post._id"
-                  :title="post.title"
-                  :subtitle="post.subtitle"
-                  :date="post.createdAt"
-                  :is-read="post.isRead"
-                />
-              </div>
-            </div>
+    <Hero />
+    <section class="section">
+      <div class="container">
+        <h1 class="title">一覧</h1>
+        <div class="columns">
+          <div class="column is-one-quarter">
+            <CourseCard />
           </div>
         </div>
       </div>
-      <!-- <form>
-        <input type="text" v-model="form.title">
-        <input type="text" v-model="form.subtitle">
-      </form>
-      {{isFormValid()}} -->
-    </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">投稿</h1>
+        <div class="columns">
+          <div class="column is-one-quarter">
+            <BlogCard />
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
-import Navbar from '~/components/Navbar'
-import PostItem from '~/components/PostItem'
+import CourseCard from '~/components/CourseCard'
+import BlogCard from '~/components/BlogCard'
+import Hero from '~/components/shared/Hero'
 export default {
   components: {
-    Navbar, PostItem
-  },
-  // fetch ({ store }) {
-  //   if (store.getters['post/hasEmptyItems']) {
-  //     return store.dispatch('post/fetchPosts')
-  //   }
-  // },
-  data () {
-    return {
-      title: '初めての投稿',
-      form: {
-        title: 'タイトル',
-        subtitle: 'サブタイトル'
-      }
-    }
-  },
-  computed: {
-    posts () {
-      return this.$store.state.post.items
-    }
-  },
-  methods: {
-    isFormValid () {
-      if (this.form.title) {
-        return true
-      }
-      return false
-    }
+    CourseCard,
+    BlogCard,
+    Hero
   }
 }
 </script>
-<style scoped>
-  .post-content {
-    font-style: italic;
-  }
-  .post {
-    margin-bottom: 20px;
-    padding: 5px;
-    border-bottom: 2px solid transparent;
-  }
-  .post:hover {
-    border-bottom: 2px solid #e8e8e8;
+
+<style scoped lang="scss">
+  .links {
+    padding-top: 15px;
   }
 </style>
