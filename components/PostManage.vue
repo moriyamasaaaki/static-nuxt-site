@@ -16,7 +16,7 @@
         <input
           v-model="post.subtitle"
           class="input"
-          type="email"
+          type="text"
           placeholder="サブタイトル" />
       </div>
     </div>
@@ -29,7 +29,12 @@
           placeholder="内容" />
       </div>
     </div>
-    <button class="button is-primary">更新</button>
+    <button
+      class="button is-primary"
+      @click.prevent="updatePost"
+    >
+      更新
+    </button>
   </form>
 </template>
 
@@ -41,6 +46,11 @@ export default {
       post: {
         ...this.postData
       }
+    }
+  },
+  methods: {
+    updatePost () {
+      this.$store.dispatch('post/updatePost', { ...this.post })
     }
   },
   watch: {
