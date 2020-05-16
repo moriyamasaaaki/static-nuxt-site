@@ -22,8 +22,8 @@
                     @blur="$v.form.email.$touch()"
                   />
                   <div v-if="$v.form.email.$error" class="form-error">
-                    <span v-if="!$v.form.email.required" class="help is-danger">Email is required</span>
-                    <span v-if="!$v.form.email.emailValidator" class="help is-danger">Email address is not valid</span>
+                    <span v-if="!$v.form.email.required" class="help is-danger">メールアドレスは入力必須です。</span>
+                    <span v-if="!$v.form.email.emailValidator" class="help is-danger">入力されたメールアドレスは不正です。</span>
                   </div>
                 </div>
               </div>
@@ -38,7 +38,7 @@
                     @blur="$v.form.email.$touch()"
                   />
                   <div v-if="$v.form.password.$error" class="form-error">
-                    <span v-if="!$v.form.password.required" class="help is-danger">Password is required</span>
+                    <span v-if="!$v.form.password.required" class="help is-danger">パスワードは入力必須です。</span>
                   </div>
                 </div>
               </div>
@@ -80,6 +80,7 @@ export default {
   methods: {
     login () {
       this.$v.form.$touch()
+      this.$store.dispatch('auth/login', this.form)
     }
   }
 }
